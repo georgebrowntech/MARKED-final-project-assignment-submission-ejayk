@@ -10,14 +10,15 @@ import { JoinGameComponent } from './components/join-game/join-game.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'add-player' },
+  { path: '', pathMatch: 'full', redirectTo: 'players' },
   { path: 'add-player', component: AddPlayerComponent },
   { path: 'update-player/:id', component: EditPlayerComponent },
   { path: 'players', component: PlayersComponent },
   { path: 'add-game', component: AddGameComponent },
   { path: 'update-game/:id', component: EditGameComponent },
   { path: 'games', component: GamesComponent },
-  { path: 'admin-login', component: GamesComponent },
+  { path: 'join-game/:id', component: JoinGameComponent },
+  { path: 'admin-login', component: AdminLoginComponent },
 ];
 
 @NgModule({

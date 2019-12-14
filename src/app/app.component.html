@@ -3,10 +3,12 @@
 </div>
 <div>
   <nav>
-    <a routerLinkActive="active" routerLink="/add-player">Add Player</a>
-    <a routerLinkActive="active" routerLink="/players">View Player</a>
-    <button routerLinkActive="active" routerLink="/admin-login">Login</button>
+    <button class="leftButton" routerLink="/add-player">Add Player</button>
+    <button class="leftButton" routerLink="/players">View Player</button>
+    <button class="leftButton" routerLink="/join-game/:id">Join Game</button>
+    <button class="rightButton" routerLink='/admin-login'>Login</button>
   </nav>
+  <br><br><br><br>
   <router-outlet></router-outlet>
   
 </div>
