@@ -1,0 +1,121 @@
+<div class="row justify-content-center">
+  <div class="col-md-4 register-player">
+    <!-- form card register -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="mb-0">Edit Player</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="inputName">Name</label>
+            <input class="form-control" type="text" formControlName="name" />
+            <!-- error -->
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && myForm.name.errors?.required"
+            >
+              Name is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputRank">Rank</label>
+            <select
+              class="custom-select form-control"
+              (change)="updateRank($event.target.value)"
+              formControlName="rank"
+            >
+              <option value="">Choose...</option>
+              <option *ngFor="let rank of ranks" value="{{ rank }}"
+                >{{ rank }}
+              </option>
+            </select>
+            <!-- error -->
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && myForm.rank.errors?.required"
+            >
+              Choose rank.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputScore">Score</label>
+            <input class="form-control" type="text" formControlName="score" />
+            <!-- error -->
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && myForm.score.errors?.required"
+            >
+              Enter your score.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputTime">Time</label>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="time_played"
+            />
+            <!-- error -->
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && myForm.time_played.errors?.required"
+            >
+              Enter your time.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputGame">Game Played</label>
+            <select
+              class="custom-select form-control"
+              (change)="updateGame($event.target.value)"
+              formControlName="game_played"
+            >
+              <option value="">Choose...</option>
+              <option *ngFor="let game of games" value="{{ game }}"
+                >{{ game }}
+              </option>
+            </select>
+            <!-- error -->
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && myForm.game.errors?.required"
+            >
+              Choose game.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputStatus">Status</label>
+            <select
+              class="custom-select form-control"
+              (change)="updateStatus($event.target.value)"
+              formControlName="status"
+            >
+              <option value="">Choose...</option>
+              <option *ngFor="let status of playerStatus" value="{{ status }}"
+                >{{ status }}
+              </option>
+            </select>
+            <!-- error -->
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && myForm.status.errors?.required"
+            >
+              Choose status.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block" type="submit">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- form  -->
+  </div>
+</div>

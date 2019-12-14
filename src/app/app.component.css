@@ -1,0 +1,14 @@
+.title {
+    text-align: center;
+    font-family: helvetica, monospace;
+    font-size: xx-large;
+    background: lightsteelblue;
+    padding: 15px;
+  }
+  body {
+    padding: 15px;
+  }
+  footer {
+    text-align: center;
+  }
+  

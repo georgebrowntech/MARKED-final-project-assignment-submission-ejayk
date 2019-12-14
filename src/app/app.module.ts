@@ -1,18 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AddPlayerComponent } from './components/add-player/add-player.component';
+import { EditPlayerComponent } from './components/edit-player/edit-player.component';
+import { PlayersComponent } from './components/players/players.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './shared/api.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddGameComponent } from './components/add-game/add-game.component';
+import { EditGameComponent } from './components/edit-game/edit-game.component';
+import { GamesComponent } from './components/games/games.component';
+import { JoinGameComponent } from './components/join-game/join-game.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddPlayerComponent,
+    EditPlayerComponent,
+    PlayersComponent,
+    AddGameComponent,
+    EditGameComponent,
+    GamesComponent,
+    JoinGameComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ApiService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
