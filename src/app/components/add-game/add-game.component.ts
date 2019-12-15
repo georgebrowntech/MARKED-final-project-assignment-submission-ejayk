@@ -46,7 +46,7 @@ export class AddGameComponent implements OnInit {
   }
   // Choose status with select dropdown
   updateGenre(e) {
-    this.gameForm.get('genres').setValue(e, {
+    this.gameForm.get('genre').setValue(e, {
       onlySelf: true
     })
   }
@@ -64,7 +64,7 @@ export class AddGameComponent implements OnInit {
     if (!this.gameForm.valid) {
       return false;
     } else {
-      this.apiService.AddPlayer(this.gameForm.value).subscribe(
+      this.apiService.AddGame(this.gameForm.value).subscribe(
         (res) => {
           console.log('Game successfully created!')
           this.ngZone.run(() => this.router.navigateByUrl('/games'))
