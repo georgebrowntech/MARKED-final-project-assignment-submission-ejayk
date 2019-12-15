@@ -46,7 +46,7 @@ export class AddGameComponent implements OnInit {
   }
   // Choose status with select dropdown
   updateGenre(e) {
-    this.gameForm.get('genres').setValue(e, {
+    this.gameForm.get('genre').setValue(e, {
       onlySelf: true
     })
   }
@@ -56,7 +56,7 @@ export class AddGameComponent implements OnInit {
     })
   }
   // Getter to access form control
-  get myForm() {
+  get addGameForm() {
     return this.gameForm.controls;
   }
   onSubmit() {

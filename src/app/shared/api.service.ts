@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Player } from './player';
+import { Game } from './game';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -58,7 +59,7 @@ export class ApiService {
 
 
   // Add player
-  AddGame(data: Player): Observable<any> {
+  AddGame(data: Game): Observable<any> {
     let API_URL = `${this.endpoint}/add-player`;
     return this.http.post(API_URL, data)
       .pipe(
@@ -83,7 +84,7 @@ export class ApiService {
   }
 
   // Update game
-  UpdateGame(id, data: Player): Observable<any> {
+  UpdateGame(id, data: Game): Observable<any> {
     let API_URL = `${this.endpoint}/update-game/${id}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
@@ -112,5 +113,4 @@ export class ApiService {
     console.log(errorMessage);
     return throwError(errorMessage);
   }
-
 }

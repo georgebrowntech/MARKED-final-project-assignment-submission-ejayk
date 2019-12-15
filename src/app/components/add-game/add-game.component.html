@@ -4,12 +4,12 @@
     <div class="card-body">
       <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="inputName">Title</label>
+          <label for="inputTitle">Title</label>
           <input class="form-control" type="text" formControlName="title" />
           <!-- error -->
           <div
             class="invalid-feedback"
-            *ngIf="submitted && myForm.title.errors?.required"
+            *ngIf="submitted && addGameForm.title.errors?.required"
           >
             Title is required.
           </div>
@@ -21,7 +21,7 @@
           <!-- error -->
           <div
             class="invalid-feedback"
-            *ngIf="submitted && myForm.platform.errors?.required"
+            *ngIf="submitted && addGameForm.platform.errors?.required"
           >
             Platform is required.
           </div>
@@ -42,7 +42,7 @@
           <!-- error -->
           <div
             class="invalid-feedback"
-            *ngIf="submitted && myForm.genre.errors?.required"
+            *ngIf="submitted && addGameForm.genre.errors?.required"
           >
             Choose genre.
           </div>
@@ -64,7 +64,7 @@
           <!-- error -->
           <div
             class="invalid-feedback"
-            *ngIf="submitted && myForm.rating.errors?.required"
+            *ngIf="submitted && addGameForm.rating.errors?.required"
           >
             Choose rating.
           </div>
@@ -76,7 +76,7 @@
           <!-- error -->
           <div
             class="invalid-feedback"
-            *ngIf="submitted && myForm.publisher.errors?.required"
+            *ngIf="submitted && addGameForm.publisher.errors?.required"
           >
             Enter your publisher.
           </div>
@@ -91,7 +91,7 @@
           <!-- error -->
           <div
             class="invalid-feedback"
-            *ngIf="submitted && myForm.release.errors?.required"
+            *ngIf="submitted && addGameForm.release.errors?.required"
           >
             Enter release year.
           </div>
@@ -112,7 +112,7 @@
           <!-- error -->
           <div
             class="invalid-feedback"
-            *ngIf="submitted && myForm.status.errors?.required"
+            *ngIf="submitted && addGameForm.status.errors?.required"
           >
             Choose status.
           </div>
