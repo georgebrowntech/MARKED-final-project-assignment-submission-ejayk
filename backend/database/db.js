@@ -1,3 +1,3 @@
 module.exports = {
-  db: "mongodb://localhost:27017/gamerlobby"
+  db: "mongodb://admin:admin@cluster0-shard-00-00-jsi42.mongodb.net:27017,cluster0-shard-00-01-jsi42.mongodb.net:27017,cluster0-shard-00-02-jsi42.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
 };
