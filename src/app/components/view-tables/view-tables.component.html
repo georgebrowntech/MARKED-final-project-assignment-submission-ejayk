@@ -1,0 +1,15 @@
+<div>
+    <button class="rightButton" *ngIf='!isAdmin' routerLink='/admin-login'>Login</button>
+    <button class="leftButton" *ngIf='isAdmin' (click)='logout()'>Logout</button>
+</div>
+<div *ngIf="isAdmin">
+    <button class="optionButton" routerLink='/players'>Players Ranking</button>
+    <button class="optionButton" routerLink='/games'>Games</button>
+</div>
+<div>
+    <button class="rightButton" *ngIf='isAdmin' routerLink='/add-player'>Add Player</button>
+    <button class="rightButton" *ngIf='isAdmin' routerLink='/add-game'>Add Game</button>
+</div>
+<div>
+    <input #search class="searchBar" placeholder="search Bar" [(ngModel)]='searchText'>
+</div>
