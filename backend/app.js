@@ -18,9 +18,13 @@ mongoose.connect(dataBaseConfig.db, {
   }
 )
 
+mongoose.set('useCreateIndex', true);
+
+
 // Set up express js port
 const playerRoute = require('../backend/routes/player.route')
 const gameRoute = require('../backend/routes/game.route')
+const userRoute = require('../backend/routes/user.route')
 
 const app = express();
 app.use(bodyParser.json());
@@ -32,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'dist/gamerlobby')));
 app.use('/', express.static(path.join(__dirname, 'dist/gamerlobby')));
 app.use('/api', playerRoute)
 app.use('/api', gameRoute)
+app.use('/api', userRoute)
 
 // Create port
 const port = process.env.PORT || 4000;
