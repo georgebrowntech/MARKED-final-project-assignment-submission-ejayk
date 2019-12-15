@@ -1,1 +1,49 @@
-<p>join-game works!</p>
+<div class="row justify-content-center">
+    <div class="col-md-4 register-player">
+      <!-- form card register -->
+      <div class="card-body">
+        <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="inputName">Player: </label>
+          </div>
+  
+          <div class="form-group">
+            <label for="inputRank">Rank: </label>
+          </div>
+  
+          <div class="form-group">
+            <label for="inputScore">Score: </label>
+          </div>
+          <div class="form-group">
+            <label for="inputTime">Time: </label>
+          </div>
+          <div class="form-group">
+            <label for="inputTime">Favourite Game: </label>
+          </div>
+          <div class="form-group">
+              <label for="inputGame">Customer: </label>
+              <select
+                class="custom-select form-control"
+                (change)="updateGame($event.target.value)"
+                formControlName="game_played"
+              >
+                <option value="">Choose...</option>
+                <option *ngFor="let game of games" value="{{ game }}"
+                  >{{ game }}
+                </option>
+              </select>
+              <!-- error -->
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && myForm.game.errors?.required"
+              >
+                Choose game.
+              </div>
+            </div>
+  
+        </form>
+      </div>
+    </div>
+    <!-- form card register -->
+  </div>
+  

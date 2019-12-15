@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor() { }
+  username: String;
+  password: String;
+
+  constructor(
+    private authService: AuthService, 
+    private location: Location,
+    private router: Router) { }
 
   ngOnInit() {
+  }
+
+  Login(f: NgForm){
+      if (this.username == 'admin' && this.password == 'admin') {
+        this.authService.Login();
+        this.router.navigateByUrl('');
+      }
+
   }
 
 }

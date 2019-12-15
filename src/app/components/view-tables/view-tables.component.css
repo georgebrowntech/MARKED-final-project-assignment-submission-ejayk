@@ -3,12 +3,10 @@
     font-family: helvetica, monospace;
     font-size: xx-large;
     background: lightsteelblue;
-    color: black;
     padding: 15px;
-}
+  }
   body {
     padding: 15px;
-    align-content: center;
   }
   footer {
     text-align: center;
@@ -23,14 +21,23 @@
     color: black;
     margin: 5px;
 }
-.adminMenu {
-    width: 50%;
-    height: 40px;
+.optionButton {
+    width: 400px;
+    height: 30px;
     font-size: large;
+    align-content: center;
+}
+.selected {
+    color: pink;
 }
 .rightButton {
     float: right;
     font-size: large;
     color: black;
     margin: 20px;
+}
+.searchBar {
+    margin: 20px;
+    align-items: center;
+    width: 75%;
 }
