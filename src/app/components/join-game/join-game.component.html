@@ -1,1 +1,39 @@
-<button (click)='onBack()'>Cancel</button>
+
+<div class="spacing">
+        <form #f="ngForm">
+            <nav class="middle"><p class="error">All Fields Are Required!!</p></nav>
+            <nav class="row">
+                <p class="col-sm-4 right">Player: </p>
+                <p class="col-sm-4 right">{{player.name}}</p>
+            </nav>
+            <nav class="row">
+                <p class="col-sm-4 right">Rank: </p>
+                <p class="col-sm-4 right">{{player.rank}}</p>
+            </nav>
+            <nav class="row">
+                <p class="col-sm-4 right">Score: </p>
+                <p class="col-sm-4 right">{{player.score}}</p>
+            </nav>
+            <nav class="row">
+                <p class="col-sm-4 right">Time Played: </p>
+                <p class="col-sm-4 right">{{player.time_played}}</p>
+            </nav>
+            <nav class="row">
+                <p class="col-sm-4 right">Favourite Game: </p>
+                <p class="col-sm-4 right">{{player.game_played}}</p>
+            </nav>
+            <nav class="row">
+                <label for="selectedGame" class="col-sm-4 right">Customer:</label>
+                <select class="col-sm-4 left" [(ngModel)]='selectedGame' name="selectedGame">
+                    <option *ngFor='let game of games' [value]="game.title">{{game.title}}</option>
+                </select>
+                <p class="error right">{{errorMessage}}</p>
+            </nav>
+            <nav class="middle">
+                <button (click)='onJoin(f)'>Update</button>
+                <button (click)='onBack()'>Cancel</button>
+            </nav>
+        </form>
+    </div>
+    
+    

@@ -16,7 +16,7 @@ export class EditPlayerComponent implements OnInit {
   playerData: Player[];
   playerStatus: any = ['Available', 'Unavailable'];
   ranks: any = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  games: any = ["Dota 2", "Fortnite", "PUBG"];
+  games: any = [];
 
   
   constructor(
@@ -29,6 +29,7 @@ export class EditPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.updatePlayer();
+    this.getGames();
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.getPlayer(id);
     this.editForm = this.fb.group({
@@ -39,6 +40,9 @@ export class EditPlayerComponent implements OnInit {
       game_played: ['', [Validators.required]],
       status: ['', [Validators.required]]
     })
+  }
+  getGames() {
+    this.apiService.GetGames().subscribe(data => this.games = data)
   }
   // Choose options with select-dropdown
   updateRank(e) {

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 import { AuthService } from '../../shared/auth.service';
-import { platform } from 'os';
 
 @Component({
   selector: 'app-players',

@@ -25,7 +25,6 @@ export class AddPlayerComponent implements OnInit {
     private location: Location,
     public authService: AuthService
   ) {
-    this.getGames();
     this.mainForm();
   }
 
