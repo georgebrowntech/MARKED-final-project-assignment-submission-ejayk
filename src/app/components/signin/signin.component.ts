@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { AuthService } from './../../shared/auth.service';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-signin',
@@ -12,6 +13,7 @@ export class SigninComponent implements OnInit {
   signinForm: FormGroup;
 
   constructor(
+    private location: Location,
     public fb: FormBuilder,
     public authService: AuthService,
     public router: Router
@@ -26,5 +28,8 @@ export class SigninComponent implements OnInit {
   }
   loginUser() {
     this.authService.signIn(this.signinForm.value)
+  }
+  onBack() {
+    this.location.back();
   }
 }

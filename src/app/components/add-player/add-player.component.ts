@@ -1,7 +1,9 @@
 import { Router } from '@angular/router';
 import { ApiService } from '../../shared/api.service';
+import { AuthService } from '../../shared/auth.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-add-player',
@@ -13,18 +15,28 @@ export class AddPlayerComponent implements OnInit {
   playerForm: FormGroup;
   playerStatus: any = ['Available', 'Unavailable'];
   ranks: any = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  games: any = ["Dota 2", "Fortnite", "PUBG"];
+  games: any = [];
 
   constructor(
     public fb: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private location: Location,
+    public authService: AuthService
   ) {
+    this.getGames();
     this.mainForm();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getGames();
+  }
+
+  getGames() {
+    this.apiService.GetGames().subscribe(data => this.games = data)
+  }
+
   mainForm() {
     this.playerForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -53,6 +65,7 @@ export class AddPlayerComponent implements OnInit {
       onlySelf: true
     })
   }
+
   // Getter to access form control
   get myForm() {
     return this.playerForm.controls;
@@ -65,11 +78,14 @@ export class AddPlayerComponent implements OnInit {
       this.apiService.AddPlayer(this.playerForm.value).subscribe(
         (res) => {
           console.log('Player successfully created!')
-          this.ngZone.run(() => this.router.navigateByUrl('/'))
+          this.ngZone.run(() => this.router.navigateByUrl('/user-profile/'))
         }, (error) => {
           console.log(error);
         });
     }
+  }
+  onBack() {
+    this.location.back();
   }
 
 }

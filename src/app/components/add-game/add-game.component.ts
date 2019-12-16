@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../shared/api.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-add-game',
@@ -17,6 +18,7 @@ export class AddGameComponent implements OnInit {
   status: any = ['Active', 'Inactive'];
 
   constructor(
+    private location: Location,
     public fb: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
@@ -67,11 +69,15 @@ export class AddGameComponent implements OnInit {
       this.apiService.AddGame(this.gameForm.value).subscribe(
         (res) => {
           console.log('Game successfully created!')
-          this.ngZone.run(() => this.router.navigateByUrl('/games'))
+          this.ngZone.run(() => this.router.navigateByUrl('/user-profile/'))
         }, (error) => {
           console.log(error);
         });
     }
+  }
+
+  onBack() {
+    this.location.back();
   }
 
 }

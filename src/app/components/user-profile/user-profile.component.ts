@@ -2,6 +2,7 @@ import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../shared/auth.service';
 import { ApiService } from './../../shared/api.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   table: String;
 
   constructor(
+    private location: Location,
     private apiService: ApiService,
     public authService: AuthService,
     private actRoute: ActivatedRoute
@@ -37,5 +39,8 @@ export class UserProfileComponent implements OnInit {
       this.table = 'games'
     else if (table == 'players')
       this.table = 'players'
+  }
+  onBack() {
+    this.location.back();
   }
 }

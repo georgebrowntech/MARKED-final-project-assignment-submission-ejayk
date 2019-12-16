@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from '../../shared/api.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-edit-player',
@@ -17,7 +18,9 @@ export class EditPlayerComponent implements OnInit {
   ranks: any = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   games: any = ["Dota 2", "Fortnite", "PUBG"];
 
+  
   constructor(
+    private location: Location,
     public fb: FormBuilder,
     private actRoute: ActivatedRoute,
     private apiService: ApiService,
@@ -91,13 +94,16 @@ export class EditPlayerComponent implements OnInit {
         let id = this.actRoute.snapshot.paramMap.get('id');
         this.apiService.UpdatePlayer(id, this.editForm.value)
           .subscribe(res => {
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/user-profile/');
             console.log('Content updated successfully!')
           }, (error) => {
             console.log(error)
           })
       }
     }
+  }
+  onBack() {
+    this.location.back();
   }
 
 

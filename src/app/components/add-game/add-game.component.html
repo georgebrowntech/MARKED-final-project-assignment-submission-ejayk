@@ -1,8 +1,10 @@
 <div class="row justify-content-center">
   <div class="col-md-4 register-game">
     <!-- form card register -->
+    <button (click)='onBack()'>Cancel</button>
     <div class="card-body">
       <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+
         <div class="form-group">
           <label for="inputName">Title</label>
           <input class="form-control" type="text" formControlName="title" />

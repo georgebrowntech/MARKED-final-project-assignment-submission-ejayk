@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 import { AuthService } from '../../shared/auth.service';
+import { platform } from 'os';
 
 @Component({
   selector: 'app-players',
@@ -23,5 +24,13 @@ export class PlayersComponent implements OnInit {
     this.apiService.GetPlayers().subscribe((data) => {
       this.Player = data;
     })
+  }
+  removePlayer(player, index) {
+    if (window.confirm('Are you sure?')) {
+      this.apiService.DeletePlayer(player._id).subscribe((data) => {
+        this.Player.splice(index, 1);
+      }
+      )
+    }
   }
 }

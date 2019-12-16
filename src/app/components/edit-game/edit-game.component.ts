@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from '../../shared/api.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-edit-game',
@@ -20,6 +20,7 @@ export class EditGameComponent implements OnInit {
   status: any = ['Active', 'Inactive'];
   
   constructor(
+    private location: Location,
     public fb: FormBuilder,
     private actRoute: ActivatedRoute,
     private apiService: ApiService,
@@ -98,13 +99,16 @@ export class EditGameComponent implements OnInit {
         let id = this.actRoute.snapshot.paramMap.get('id');
         this.apiService.UpdateGame(id, this.editForm.value)
           .subscribe(res => {
-            this.router.navigateByUrl('/games');
+            this.router.navigateByUrl('/user-profile/');
             console.log('Game updated successfully!')
           }, (error) => {
             console.log(error)
           })
       }
     }
+  }
+  onBack() {
+    this.location.back();
   }
 
 }

@@ -26,27 +26,28 @@
         <td>{{ player.game_played }}</td>
         <td>{{ player.status }}</td>
         <td class="text-center edit-block">
-          <button
-            *ngIf="player.status == 'Availiable' && !isAdmin"
+            <div *ngIf="!isAdmin">
+          <button *ngIf="player.status == 'Available'"
             routerLink="/join-game/{{ player._id }}"
           >
             Join Game
           </button>
+            </div>
+          <div *ngIf="isAdmin">
           <span
-            *ngIf="isAdmin"
             class="edit"
             routerLink="/update-player/{{ player._id }}"
           >
             <button type="button" class="btn btn-success btn-sm">Update</button>
           </span>
-          <br *ngIf="isAdmin" />
+          <br/>
           <span
-            *ngIf="isAdmin"
             class="delete"
-            (click)="onDelete(player, player._id)"
+            (click)="removePlayer(player, player._id)"
           >
             <button type="button" class="btn btn-danger btn-sm">Delete</button>
           </span>
+        </div>
         </td>
       </tr>
     </tbody>
