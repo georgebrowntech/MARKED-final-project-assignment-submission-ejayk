@@ -19,7 +19,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let game of Game; let i = index">
+      <tr *ngFor='let game of Game | gameSearch:searchText'>
+      <!-- <tr *ngFor="let game of Game; let i = index"> -->
         <th scope="row">{{ game.title }}</th>
         <td>{{ game.platform }}</td>
         <td>{{ game.genre }}</td>

@@ -10,12 +10,15 @@
     <button class="col-sm-4" (click)='changeTable("players")' [class.selected]="table == 'players'">Players</button>
     <button class="col-sm-4" (click)='changeTable("games")' [class.selected]="table == 'games'">Games</button>
 </div>
+<div>
+    <input #search class="searchBar" placeholder="search Bar" [(ngModel)]='searchText'>
+</div>
 <div *ngIf="table == 'players'">
   <button routerLink="/add-player">Add Players</button>
-  <app-players></app-players>
+  <app-players [searchText]='searchText'></app-players>
 </div>
 
 <div *ngIf="table == 'games'">
     <button routerLink="/add-game">Add Games</button>
-    <app-games></app-games>
+    <app-games [searchText]='searchText'></app-games>
   </div>

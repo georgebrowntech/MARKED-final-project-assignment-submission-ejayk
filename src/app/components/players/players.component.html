@@ -18,7 +18,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let player of Player; let i = index">
+        <tr *ngFor='let player of Player | playerSearch:searchText'>
+      <!-- <tr *ngFor="let player of Player; let i = index"> -->
         <th scope="row">{{ player.name }}</th>
         <td>{{ player.rank }}</td>
         <td>{{ player.score }}</td>

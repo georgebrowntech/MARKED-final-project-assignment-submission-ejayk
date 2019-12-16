@@ -16,6 +16,8 @@ import { JoinGameComponent } from './components/join-game/join-game.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { PlayerSearchPipe } from './player-search.pipe';
+import { GameSearchPipe } from './game-search.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     JoinGameComponent,
     SigninComponent,
     SignupComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PlayerSearchPipe,
+    GameSearchPipe
   ],
   imports: [
     BrowserModule,

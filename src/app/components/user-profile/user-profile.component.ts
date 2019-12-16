@@ -16,7 +16,8 @@ export class UserProfileComponent implements OnInit {
   Player: any = [];
   Game: any = [];
   table: String;
-
+  searchText: String;
+  
   constructor(
     private location: Location,
     private apiService: ApiService,

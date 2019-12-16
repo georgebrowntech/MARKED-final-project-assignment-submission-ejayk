@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 import { AuthService } from '../../shared/auth.service';
 import { platform } from 'os';
@@ -11,6 +11,7 @@ import { platform } from 'os';
 export class PlayersComponent implements OnInit {
   Player: any = [];
   isAdmin: boolean;
+  @Input() searchText: String;
 
   constructor(private apiService: ApiService, public authService: AuthService,) {
     this.readPlayers();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { ApiService } from '../../shared/api.service';
 })
 export class GamesComponent implements OnInit {
   Game: any = [];
+  @Input() searchText: String;
   constructor(private apiService: ApiService) {
     this.readGames();
   }
