@@ -13,6 +13,7 @@ export class AuthService {
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
+  adminLogin: boolean;
 
   constructor(
     private http: HttpClient,
@@ -20,6 +21,10 @@ export class AuthService {
   ) {
   }
 
+  isUserLogged(){
+    let authToken = localStorage.getItem('access_token');
+    return (authToken !== null) ? true : false;
+  }
   // Sign-up
   signUp(user: User): Observable<any> {
     let api = `${this.endpoint}/register-user`;

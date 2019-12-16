@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-players',
@@ -8,25 +9,19 @@ import { ApiService } from '../../shared/api.service';
 })
 export class PlayersComponent implements OnInit {
   Player: any = [];
+  isAdmin: boolean;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, public authService: AuthService,) {
     this.readPlayers();
   }
 
   ngOnInit() {
+    this.isAdmin = this.authService.isUserLogged();
   }
 
   readPlayers() {
     this.apiService.GetPlayers().subscribe((data) => {
       this.Player = data;
     })
-  }
-  removePlayer(player, index) {
-    if (window.confirm('Are you sure?')) {
-      this.apiService.DeletePlayer(player._id).subscribe((data) => {
-        this.Player.splice(index, 1);
-      }
-      )
-    }
   }
 }

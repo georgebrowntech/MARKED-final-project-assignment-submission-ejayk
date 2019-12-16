@@ -1,8 +1,100 @@
 <div class="container">
-    <div class="row">
-        <div class="inner-main">
-            <h2 class="mb-4">User Profile</h2>
-            <p><strong>username:</strong> {{this.currentUser.username}}</p>
-        </div>
+  <div class="row">
+    <div class="inner-main">
+      <h2 class="mb-4">User Profile</h2>
+      <p><strong>username:</strong> {{ this.currentUser.username }}</p>
     </div>
+  </div>
 </div>
+
+<app-players *ngIf="table == 'players'">
+
+</app-players>
+<app-games *ngIf="table == 'games'">
+    
+</app-games>
+
+<!-- 
+
+<div class="container">
+        
+        <p *ngIf="Player.length <= 0" class="no-data text-center">
+          There is no player added yet!
+        </p>
+      
+        <h3>Players</h3>
+        
+        <table class="table table-bordered" *ngIf="Player.length > 0">
+          <thead class="table-success">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Rank</th>
+              <th scope="col">Score</th>
+              <th scope="col">Time</th>
+              <th scope="col">Games Played</th>
+              <th scope="col">Status</th>
+              <th scope="col center">Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let player of Player; let i = index">
+              <th scope="row">{{ player.name }}</th>
+              <td>{{ player.rank }}</td>
+              <td>{{ player.score }}</td>
+              <td>{{ player.time_played }}</td>
+              <td>{{ player.game_played }}</td>
+              <td>{{ player.status }}</td>
+              <td class="text-center edit-block">
+                <span class="edit" [routerLink]="['/update-player/', player._id]">
+                  <button type="button" class="btn btn-success btn-sm">Update</button>
+                </span>
+                <span class="delete" (click)="removePlayer(player, i)">
+                  <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="container">
+        
+        <p *ngIf="Game.length <= 0" class="no-data text-center">
+          There is no game added yet!
+        </p>
+      <h3>Games</h3>
+        
+        <table class="table table-bordered" *ngIf="Game.length > 0">
+          <thead class="table-success">
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Platform</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Publisher</th>
+              <th scope="col">Release</th>
+              <th scope="col">Status</th>
+              <th scope="col center">Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let game of Game; let i = index">
+              <th scope="row">{{ game.title }}</th>
+              <td>{{ game.platform }}</td>
+              <td>{{ game.genre }}</td>
+              <td>{{ game.rating }}</td>
+              <td>{{ game.publisher }}</td>
+              <td>{{ game.release }}</td>
+              <td>{{ game.status }}</td>
+              <td class="text-center edit-block">
+                <span class="edit" [routerLink]="['/update-game/', game._id]">
+                  <button type="button" class="btn btn-success btn-sm">Update</button>
+                </span>
+                <span class="delete" (click)="removeGame(game, i)">
+                  <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+       -->

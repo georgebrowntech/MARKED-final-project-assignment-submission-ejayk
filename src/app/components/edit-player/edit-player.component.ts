@@ -91,7 +91,7 @@ export class EditPlayerComponent implements OnInit {
         let id = this.actRoute.snapshot.paramMap.get('id');
         this.apiService.UpdatePlayer(id, this.editForm.value)
           .subscribe(res => {
-            this.router.navigateByUrl('/players');
+            this.router.navigateByUrl('/');
             console.log('Content updated successfully!')
           }, (error) => {
             console.log(error)

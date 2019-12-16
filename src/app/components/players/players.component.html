@@ -14,7 +14,7 @@
         <th scope="col">Time</th>
         <th scope="col">Games Played</th>
         <th scope="col">Status</th>
-        <th scope="col center">Update</th>
+        <th scope="col center"></th>
       </tr>
     </thead>
     <tbody>
@@ -26,10 +26,25 @@
         <td>{{ player.game_played }}</td>
         <td>{{ player.status }}</td>
         <td class="text-center edit-block">
-          <span class="edit" [routerLink]="['/update-player/', player._id]">
+          <button
+            *ngIf="player.status == 'Availiable' && !isAdmin"
+            routerLink="/join-game/{{ player._id }}"
+          >
+            Join Game
+          </button>
+          <span
+            *ngIf="isAdmin"
+            class="edit"
+            routerLink="/update-player/{{ player._id }}"
+          >
             <button type="button" class="btn btn-success btn-sm">Update</button>
           </span>
-          <span class="delete" (click)="removePlayer(player, i)">
+          <br *ngIf="isAdmin" />
+          <span
+            *ngIf="isAdmin"
+            class="delete"
+            (click)="onDelete(player, player._id)"
+          >
             <button type="button" class="btn btn-danger btn-sm">Delete</button>
           </span>
         </td>

@@ -65,7 +65,7 @@ export class AddPlayerComponent implements OnInit {
       this.apiService.AddPlayer(this.playerForm.value).subscribe(
         (res) => {
           console.log('Player successfully created!')
-          this.ngZone.run(() => this.router.navigateByUrl('/players'))
+          this.ngZone.run(() => this.router.navigateByUrl('/'))
         }, (error) => {
           console.log(error);
         });
